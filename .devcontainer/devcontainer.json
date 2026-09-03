@@ -1,9 +1,6 @@
 {
   "name": "Lab 28 browser fallback",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
@@ -12,7 +9,7 @@
     "memory": "8gb",
     "storage": "16gb"
   },
-  "postCreateCommand": "uv sync --python 3.11 --extra dev --extra integration",
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=$HOME/.local/bin:$PATH && uv sync --python 3.11 --extra dev --extra integration",
   "forwardPorts": [8000, 9090],
   "portsAttributes": {
     "8000": {
